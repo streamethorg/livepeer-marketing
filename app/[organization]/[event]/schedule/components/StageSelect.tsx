@@ -1,5 +1,4 @@
 'use client'
-import { IStageModel } from 'streameth-new-server/src/interfaces/stage.interface'
 import useSearchParams from '@/lib/hooks/useSearchParams'
 import {
   Select,

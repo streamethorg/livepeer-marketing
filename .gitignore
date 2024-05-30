@@ -5,8 +5,6 @@ node_modules
 /.pnp
 .pnp.js
 
-.yarn/*
-.yarn
 # testing
 /coverage
 
@@ -27,7 +25,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env
 .env*.local
 
 # vercel
@@ -48,7 +45,3 @@ google_sa_secret.json
 
 # Sentry Config File
 .sentryclirc
-
-.yarn/*
-.yarn
-.yarn/

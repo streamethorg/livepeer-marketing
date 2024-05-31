@@ -11,7 +11,6 @@ import { Search } from 'lucide-react'
 import { Page } from '@/lib/types'
 import { useSIWE } from 'connectkit'
 import useUserData from '@/lib/hooks/useUserData'
-import SwitchOrganization from '@/app/studio/[organization]/components/SwitchOrganization'
 import { IExtendedOrganization } from '@/lib/types'
 import { cn } from '@/lib/utils/utils'
 import { Button } from '@/components/ui/button'
@@ -121,14 +120,7 @@ const MobileNavBar = ({
           menuVisible && 'bg-background',
           searchVisible && showSearchBar && 'bg-background'
         )}>
-        {organizations && (
-          <div className="m-1 mr-2">
-            <SwitchOrganization
-              organization={currentOrganization}
-              organizations={organizations}
-            />
-          </div>
-        )}
+
         {showSearchBar && (
           <Link href={`/${currentOrganization}`}>
             <Image
@@ -224,12 +216,6 @@ const PCNavBar = ({
         )}
       </div>
       <div className="flex flex-1 justify-end items-center">
-        {organizations && (
-          <SwitchOrganization
-            organization={currentOrganization}
-            organizations={organizations}
-          />
-        )}
         <Navbar
           organization={currentOrganization}
           pages={getPages(

@@ -19,7 +19,7 @@ import { calMintPrice, getVideoIndex } from '@/lib/utils/utils'
 import { Dialog, DialogContent, DialogTitle } from '../ui/dialog'
 import { CheckCircle2, Loader2 } from 'lucide-react'
 import { type BaseError } from 'wagmi'
-import TransactionHash from '@/app/studio/[organization]/nfts/create/components/TransactionHash'
+// import TransactionHash from '@/app/studio/[organization]/nfts/create/components/TransactionHash'
 import { ConnectWalletButton } from '../misc/ConnectWalletButton'
 
 const CollectVideButton = ({
@@ -156,7 +156,7 @@ const CollectVideButton = ({
                 error?.message}
             </div>
           ) : hash ? (
-            <TransactionHash hash={hash} />
+            <></>
           ) : (
             <div className="flex gap-2 items-center">
               <div className="p-2 mr-2 rounded-full bg-grey h-fit">

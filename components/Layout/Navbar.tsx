@@ -59,9 +59,7 @@ export default function Navbar({
             </DialogContent>
           </Dialog>
         )}
-        <NavigationMenuItem key={'connect'} className="lg:hidden">
-          <ConnectWalletButton className="w-full rounded-none" />
-        </NavigationMenuItem>
+
       </ul>
     </div>
   )

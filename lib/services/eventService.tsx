@@ -1,9 +1,6 @@
-import { IStage } from 'streameth-new-server/src/interfaces/stage.interface'
+import { IStage } from '@/lib/interfaces/stage.interface'
 import { apiUrl } from '@/lib/utils/utils'
-import {
-  IEvent,
-  IEventModel,
-} from 'streameth-new-server/src/interfaces/event.interface'
+import { IEvent, IEventModel } from '@/lib/interfaces/event.interface'
 import { fetchOrganization } from './organizationService'
 import { IExtendedEvent } from '../types'
 

@@ -47,9 +47,7 @@ const Layout = async ({
         {children}
         <Support />
       </div>
-      <div className="sticky mb-5 top-[100vh]">
-        <Footer />
-      </div>
+     
     </div>
   )
 }

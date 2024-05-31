@@ -1,7 +1,6 @@
 'use server'
 
 import { Livepeer } from 'livepeer'
-import { Session } from 'livepeer/dist/models/components'
 import { IExtendedSession } from '../types'
 import { fetchEvent } from '../services/eventService'
 
@@ -60,23 +59,22 @@ export const getUrlAction = async (
   fileName: string
 ): Promise<UrlActionParams | null> => {
   try {
-    const asset = await livepeer.asset.create({
+    const asset = (await livepeer.asset.create({
       name: fileName,
       storage: {
         ipfs: true,
       },
-    })
+    })).data
+   
 
-    if (!asset.object) {
+    if (!asset) {
       return null
     }
 
-    const params: UrlActionParams = {
-      url: asset.object.url,
-      assetId: asset.object.asset.id,
-    }
-
-    return params
+  return {
+    url: asset.asset.playbackUrl ?? "",
+    assetId: asset.asset.id,
+  }
   } catch (error) {
     console.error('Error fetching a Livepeer url:', error)
     return null
@@ -97,7 +95,8 @@ export const getStreamRecordings = async ({
   const parentStream = (await livepeer.stream.get(streamId)).stream
   const recordings = (
     await livepeer.session.getRecorded(parentStream?.id ?? '')
-  ).classes
+  ).data
+
   if (!recordings) {
     return {
       parentStream,
@@ -106,7 +105,7 @@ export const getStreamRecordings = async ({
   }
   return {
     parentStream,
-    recordings: JSON.parse(JSON.stringify(recordings)) as Session[],
+    recordings: JSON.parse(JSON.stringify(recordings)),
   }
 }
 

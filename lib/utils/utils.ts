@@ -10,8 +10,8 @@ import {
   IGenerateEmbedCode,
   eSort,
 } from '@/lib/types'
-import { IOrganizationModel } from 'streameth-new-server/src/interfaces/organization.interface'
-import { IEventModel } from 'streameth-new-server/src/interfaces/event.interface'
+import { IOrganizationModel } from '@/lib/interfaces/organization.interface'
+import { IEventModel } from '@/lib/interfaces/event.interface'
 import { UseFormProps, UseFormReturn } from 'react-hook-form'
 import { getDateInUTC } from './time'
 import { toast } from 'sonner'

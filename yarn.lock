@@ -1445,7 +1445,7 @@
     multiformats "^13.1.0"
     zustand "^4.5.2"
 
-"@livepeer/react@^4.1.8":
+"@livepeer/react@^4.1.18":
   version "4.1.18"
   resolved "https://registry.yarnpkg.com/@livepeer/react/-/react-4.1.18.tgz#5d32a43bc701486ad9b6a7f8a5cd83589fe71bfa"
   integrity sha512-ePnhCHfhzdNjFhqrFy7bcerPe7pVtgMnRUahH0dmUByt1E3XGlOcNf0B4+Ub+Tl2+s0yXWV5oaBzsLgTPCX8SA==
@@ -7969,7 +7969,7 @@ livekit-server-sdk@^1.2.7:
     long "^5.0.0"
     protobufjs "^7.2.4"
 
-livepeer@^3.0.2:
+livepeer@^3.2.4:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/livepeer/-/livepeer-3.2.4.tgz#00238e97ac4ca6e6b92b629b0ed853e5ccde8ed9"
   integrity sha512-2AS7siFZd8Xy/IvCxNVY+xGnvwqRYgSS6fslAW20DzoiwQejJ7QhLfGMB+KGxAW1Lvf5057Vk02zSSfk8Ieo5g==

@@ -10,7 +10,7 @@ import {
 import {
   ISession,
   SessionType,
-} from 'streameth-new-server/src/interfaces/session.interface'
+} from '@/lib/interfaces/session.interface'
 import { revalidatePath } from 'next/cache'
 
 const livepeer = new Livepeer({
@@ -69,18 +69,23 @@ export const createClip = async ({
   end: number
   session: IExtendedSession | ISession
 }) => {
-  const clip = await livepeer.stream.createClip({
-    endTime: end,
-    playbackId,
-    sessionId,
-    startTime: start,
-  })
-  console.log('Clip created:', clip)
+  const clip = (
+    await livepeer.stream.createClip({
+      endTime: end,
+      playbackId,
+      sessionId,
+      startTime: start,
+    })
+  ).data
+
+  if (!clip) {
+    throw new Error('Error creating clip')
+  }
 
   const updatedSession = {
     ...session,
-    assetId: clip.object?.asset.id,
-    playbackId: clip.object?.asset.playbackId,
+    assetId: clip.asset.id,
+    playbackId: clip.asset.playbackId,
     start: new Date().getTime(),
     end: new Date().getTime(),
     type: SessionType['clip'],
@@ -133,18 +138,19 @@ export const getSessionMetrics = async ({
   playTimeMins: number
 }> => {
   try {
-    const metrics = await livepeer.metrics.getPublicTotalViews(
-      playbackId
-    )
-    if (!metrics.object) {
+    const metrics = (
+      await livepeer.metrics.getPublicViewership(playbackId)
+    ).data
+
+    if (!metrics) {
       return {
         viewCount: 0,
         playTimeMins: 0,
       }
     }
     return {
-      viewCount: metrics.object?.viewCount,
-      playTimeMins: metrics.object?.playtimeMins,
+      viewCount: metrics.viewCount ?? 0,
+      playTimeMins: metrics.playtimeMins ?? 0,
     }
   } catch (error) {
     console.error('Error getting metrics:', error)

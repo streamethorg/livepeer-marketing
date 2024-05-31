@@ -10,7 +10,7 @@ import {
   IDataImporter,
   GSheetConfig,
   PretalxConfig,
-} from 'streameth-new-server/src/interfaces/event.interface'
+} from '@/lib/interfaces/event.interface'
 import { createGoogleSheetAction } from '@/lib/actions/events'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'

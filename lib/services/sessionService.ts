@@ -1,8 +1,8 @@
-import { ISessionModel } from 'streameth-new-server/src/interfaces/session.interface'
+import { ISessionModel } from '@/lib/interfaces/session.interface'
 import { IExtendedSession } from '../types'
 import { apiUrl } from '@/lib/utils/utils'
 import { Livepeer } from 'livepeer'
-import { ISession } from 'streameth-new-server/src/interfaces/session.interface'
+import { ISession } from '@/lib/interfaces/session.interface'
 import { revalidatePath } from 'next/cache'
 
 export const createSession = async ({
@@ -49,10 +49,10 @@ export const fetchSession = async ({
     }
     const data: IExtendedSession = (await response.json()).data
     if (data.assetId) {
-      const livepeerData = await LivepeerClient.asset.get(
-        data.assetId
-      )
-      data.videoUrl = livepeerData.asset?.playbackUrl
+      console.log(data.assetId)
+      const livepeerData = await LivepeerClient.asset.get(data.assetId)
+      console.log("DATAAAAAAA", livepeerData)
+      // data.videoUrl = livepeerData.asset?.playbackUrl
     }
     return data
   } catch (e) {

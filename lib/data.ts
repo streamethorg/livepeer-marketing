@@ -1,4 +1,4 @@
-import { ISpeakerModel } from 'streameth-new-server/src/interfaces/speaker.interface'
+import { ISpeakerModel } from '@/lib/interfaces/speaker.interface'
 
 import { NavBarProps, IPagination, IExtendedSession } from './types'
 import FuzzySearch from 'fuzzy-search'

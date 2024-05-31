@@ -1,5 +1,5 @@
 import { apiUrl } from '@/lib/utils/utils'
-import { IOrganization } from 'streameth-new-server/src/interfaces/organization.interface'
+import { IOrganization } from '@/lib/interfaces/organization.interface'
 import { IExtendedOrganization, IExtendedUser } from '../types'
 import { cookies } from 'next/headers'
 

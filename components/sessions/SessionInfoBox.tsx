@@ -10,10 +10,10 @@ import ShareButton from '../misc/interact/ShareButton'
 import CollectVideButton from './CollectVideButton'
 import { fetchNFTCollection } from '@/lib/services/nftCollectionService'
 import { formatDate } from '@/lib/utils/time'
-import ViewCounts from '@/app/[organization]/components/ViewCounts'
-import CalendarReminder from '@/app/[organization]/livestream/components/CalendarReminder'
+import ViewCounts from '@/app/tv/components/ViewCounts'
+import CalendarReminder from '@/app/tv/livestream/components/CalendarReminder'
 import { IExtendedSpeaker } from '@/lib/types'
-import VideoDownload from '@/app/[organization]/components/VideoDownload'
+import VideoDownload from '@/app/tv/components/VideoDownload'
 import {
   Popover,
   PopoverContent,
@@ -76,7 +76,7 @@ const MobileButtons = ({
   vod: boolean
 }) => {
   return (
-    <div className='flex flex-row flex-wrap w-full space-x-2 justify-end'>
+    <div className="flex flex-row flex-wrap w-full space-x-2 justify-end">
       {video?.nftCollections?.[0] && (
         <div className="w-full">
           <CollectVideButton

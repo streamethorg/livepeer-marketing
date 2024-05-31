@@ -38,10 +38,10 @@ export default async function Watch({
   searchParams,
 }: OrganizationPageProps) {
   const organization = await fetchOrganization({
-    organizationSlug: params.organization,
+    organizationSlug: process.env.NEXT_ORGANIZATION,
   })
 
-  if (!organization) {
+  if (!organization || !organization.slug) {
     return notFound()
   }
 
@@ -50,10 +50,7 @@ export default async function Watch({
     session: searchParams.session,
   })
 
-  const videoUrl = await getVideoUrlAction(
-    video?.assetId,
-    video?.playbackId
-  )
+  const videoUrl = video?.videoUrl
   if (!video || !videoUrl) return notFound()
 
   return (
@@ -79,18 +76,20 @@ export default async function Watch({
               date={video.createdAt as string}
               playbackId={video.playbackId}
               video={video}
-              organizationSlug={params.organization}
+              organizationSlug={organization.slug}
               vod={true}
             />
           </div>
         </div>
         <div className="px-4">
           <div className="md:hidden">
-            <WatchGrid organizationSlug={params.organization} />
+            <WatchGrid
+              organizationSlug={organization.slug}
+            />
           </div>
           <div className="hidden md:block">
             <WatchGrid
-              organizationSlug={params.organization}
+              organizationSlug={organization.slug}
               gridLength={6}
             />
           </div>

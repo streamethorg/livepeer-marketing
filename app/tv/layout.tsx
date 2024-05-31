@@ -12,7 +12,7 @@ const Layout = async ({
   params: { organization: string }
   children: React.ReactNode
 }) => {
-  const org = params.organization
+  const org = process.env.NEXT_ORGANIZATION
   const pages = [
     {
       name: 'Home',
@@ -27,7 +27,7 @@ const Layout = async ({
   ]
 
   const organization = await fetchOrganization({
-    organizationSlug: params.organization,
+    organizationSlug: process.env.NEXT_ORGANIZATION,
   })
 
   if (!organization) {
@@ -38,7 +38,7 @@ const Layout = async ({
     <div className="flex flex-col mx-auto w-full bg-white min-h-[100vh]">
       <HomePageNavbar
         logo={organization?.logo}
-        currentOrganization={params.organization}
+        currentOrganization={process.env.NEXT_ORGANIZATION}
         pages={pages}
         showSearchBar
       />

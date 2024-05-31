@@ -8,7 +8,6 @@ import Navbar from './Navbar'
 import { useMediaQuery } from '@/lib/hooks/useMediaQuery'
 import { NavigationMenu } from '@/components/ui/navigation-menu'
 import { NavBarProps } from '@/lib/types'
-import { ConnectWalletButton } from '../misc/ConnectWalletButton'
 
 const NavBarButton = ({
   isNavVisible,
@@ -130,7 +129,6 @@ export default function NavbarTop({
               setIsNavVisible={setMenuVisible}
             />
           )}
-          <ConnectWalletButton />
         </div>
       </div>
     </NavigationMenu>

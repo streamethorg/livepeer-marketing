@@ -42,10 +42,10 @@ export default async function Livestream({
   searchParams,
 }: OrganizationPageProps) {
   const organization = await fetchOrganization({
-    organizationSlug: params.organization,
+    organizationSlug: process.env.NEXT_ORGANIZATION,
   })
 
-  if (!organization) {
+  if (!organization || !organization.slug) {
     return notFound()
   }
 
@@ -72,11 +72,13 @@ export default async function Livestream({
         </div>
         <div className="px-4 md:px-0">
           <div className="md:hidden">
-            <WatchGrid organizationSlug={params.organization} />
+            <WatchGrid
+              organizationSlug={organization.slug}
+            />
           </div>
           <div className="hidden md:block">
             <WatchGrid
-              organizationSlug={params.organization}
+              organizationSlug={organization.slug}
               gridLength={6}
             />
           </div>

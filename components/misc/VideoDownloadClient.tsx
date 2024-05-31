@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Download } from 'lucide-react'
 import { toast } from 'sonner'
 import { apiUrl, cn } from '@/lib/utils/utils'
-import Collection from '@/app/[organization]/collection/page'
+import Collection from '@/app/tv/collection/page'
 
 const VideoDownloadClient = ({
   videoName,

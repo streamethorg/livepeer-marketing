@@ -22,10 +22,8 @@ import Livepeer from '@/public/livepeer-logo.png'
 import Image from 'next/image'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useAccount, useEnsName } from 'wagmi'
-import { ConnectWalletButton } from '@/components/misc/ConnectWalletButton'
 import { IExtendedChat } from '@/lib/types'
 import { createChatAction } from '@/lib/actions/chat'
-import { useSIWE } from 'connectkit'
 interface Props {
   participantName: string
   stageId: string
@@ -153,7 +151,6 @@ function Chat({ participantName, stageId, prevChatMessages }: Props) {
     setChatMessages(mergedMessages)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages])
-  const { isSignedIn } = useSIWE()
   const account = useAccount()
 
   const [message, setMessage] = useState('')
@@ -239,7 +236,7 @@ function Chat({ participantName, stageId, prevChatMessages }: Props) {
           </div>
         ))}
       </div>
-      {account.isConnected && isSignedIn ? (
+      {account.isConnected ? (
         <div className="flex flex-col  gap-2">
           <Textarea
             value={message}
@@ -260,7 +257,6 @@ function Chat({ participantName, stageId, prevChatMessages }: Props) {
         </div>
       ) : (
         <div className="flex flex-col  gap-2">
-          <ConnectWalletButton />
         </div>
       )}
     </>

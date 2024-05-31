@@ -1,5 +1,4 @@
 'use client'
-import makeBlockie from 'ethereum-blockies-base64'
 import { Badge } from '@/components/ui/badge'
 import {
   Avatar,
@@ -8,9 +7,6 @@ import {
 } from '@/components/ui/avatar'
 import { Credenza, CredenzaTrigger } from '../ui/crezenda'
 import { IExtendedSpeaker } from '@/lib/types'
-function CreateBlockie(username: string) {
-  return makeBlockie(username)
-}
 
 export default function SpeakerIcon({
   speaker,
@@ -22,13 +18,7 @@ export default function SpeakerIcon({
   if (onlyImage) {
     return (
       <Avatar className="my-2">
-        <AvatarImage
-          src={
-            speaker.photo
-              ? speaker.photo
-              : CreateBlockie(speaker.name)
-          }
-        />
+        <AvatarImage src={speaker.photo} />
         <AvatarFallback>
           {speaker.name.slice(0, 1).toUpperCase()}
         </AvatarFallback>

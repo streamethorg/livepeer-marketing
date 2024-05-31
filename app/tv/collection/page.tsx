@@ -16,12 +16,12 @@ const Collection = async ({
   params,
   searchParams,
 }: OrganizationPageProps) => {
-  if (!params.organization) {
+  if (!process.env.NEXT_ORGANIZATION) {
     return notFound()
   }
 
   const organization = await fetchOrganization({
-    organizationSlug: params.organization,
+    organizationSlug: process.env.NEXT_ORGANIZATION,
   })
 
   const collection = await fetchNFTCollection({
@@ -65,7 +65,7 @@ const Collection = async ({
               video={video}
               key={collection._id}
               nftCollection={collection}
-              organizationSlug={params.organization}
+              organizationSlug={process.env.NEXT_ORGANIZATION}
             />
           ))}
         </div>

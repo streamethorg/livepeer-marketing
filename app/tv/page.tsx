@@ -24,24 +24,16 @@ import {
   generalMetadata,
 } from '@/lib/utils/metadata'
 
-export async function generateStaticParams() {
-  const organizations = await fetchOrganizations()
-  const paths = organizations.map((organization) => ({
-    organization: organization.slug,
-  }))
-  return paths
-}
-
 const OrganizationHome = async ({
   params,
   searchParams,
 }: ChannelPageParams) => {
-  if (!params.organization) {
+  if (!process.env.NEXT_ORGANIZATION) {
     return NotFound()
   }
 
   const organization = await fetchOrganization({
-    organizationSlug: params.organization,
+    organizationSlug: process.env.NEXT_ORGANIZATION,
   })
 
   if (!organization) {
@@ -121,17 +113,19 @@ const OrganizationHome = async ({
         <Suspense fallback={<UpcomingStreamsLoading />}>
           <UpcomingStreams
             organizationId={organization._id}
-            organizationSlug={params.organization}
+            organizationSlug={process.env.NEXT_ORGANIZATION}
             currentStreamId={searchParams.streamId}
           />
         </Suspense>
         <Suspense fallback={<WatchGridLoading />}>
           <div className="md:hidden">
-            <WatchGrid organizationSlug={params.organization} />
+            <WatchGrid
+              organizationSlug={process.env.NEXT_ORGANIZATION}
+            />
           </div>
           <div className="hidden md:block">
             <WatchGrid
-              organizationSlug={params.organization}
+              organizationSlug={process.env.NEXT_ORGANIZATION}
               gridLength={6}
             />
           </div>
@@ -145,12 +139,12 @@ export async function generateMetadata(
   { params }: ChannelPageParams,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  if (!params.organization) {
+  if (!process.env.NEXT_ORGANIZATION) {
     return generalMetadata
   }
 
   const organization = await fetchOrganization({
-    organizationSlug: params.organization,
+    organizationSlug: process.env.NEXT_ORGANIZATION,
   })
 
   if (!organization) {

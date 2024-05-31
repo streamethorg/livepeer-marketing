@@ -6,11 +6,8 @@ import Link from 'next/link'
 import { NavigationMenu } from '@/components/ui/navigation-menu'
 import { Menu, X } from 'lucide-react'
 import Navbar from './Navbar'
-import { ConnectWalletButton } from '../misc/ConnectWalletButton'
 import { Search } from 'lucide-react'
 import { Page } from '@/lib/types'
-import { useSIWE } from 'connectkit'
-import useUserData from '@/lib/hooks/useUserData'
 import { IExtendedOrganization } from '@/lib/types'
 import { cn } from '@/lib/utils/utils'
 import { Button } from '@/components/ui/button'
@@ -89,8 +86,6 @@ const MobileNavBar = ({
   const [searchVisible, setSearchVisible] = useState(false)
   const toggleSearch = () => setSearchVisible(!searchVisible)
   const toggleMenu = () => setMenuVisible(!menuVisible)
-  const { isSignedIn } = useSIWE()
-  const { userData } = useUserData()
 
   useLayoutEffect(() => {
     if (menuVisible || searchVisible) {
@@ -199,8 +194,8 @@ const MobileNavBar = ({
             organization={currentOrganization}
             pages={getPages(
               pages,
-              isSignedIn,
-              userData?.organizations?.[0]?.slug
+              false,
+              
             )}
           />
         )}
@@ -224,8 +219,6 @@ const PCNavBar = ({
   organizations?: IExtendedOrganization[]
   currentOrganization: string
 }) => {
-  const { isSignedIn } = useSIWE()
-  const { userData } = useUserData()
   return (
     <NavigationMenu className="hidden sticky top-0 flex-row justify-between items-center p-2 px-4 w-full bg-white shadow-sm md:hidden lg:flex">
       <div className="flex flex-1 justify-start items-center">
@@ -303,8 +296,7 @@ const PCNavBar = ({
           organization={currentOrganization}
           pages={getPages(
             pages,
-            isSignedIn,
-            userData?.organizations?.[0]?.slug
+            false,
           )}
         />
       </div>

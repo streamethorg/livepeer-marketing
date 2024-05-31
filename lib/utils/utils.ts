@@ -12,7 +12,6 @@ import {
 } from '@/lib/types'
 import { IOrganization } from '@/lib/interfaces/organization.interface'
 import { IEvent } from '@/lib/interfaces/event.interface'
-import { UseFormProps, UseFormReturn } from 'react-hook-form'
 import { getDateInUTC } from './time'
 import { toast } from 'sonner'
 
@@ -163,14 +162,6 @@ export const validateEnv = (envVar: string) => {
     throw new Error(`No ${envVar} found`)
   }
   return value
-}
-
-export const getFormSubmitStatus = (form: UseFormReturn<any>) => {
-  const isSubmitDisabled =
-    form.formState.isSubmitting ||
-    !form.formState.isValid ||
-    Object.keys(form.formState.dirtyFields).length === 0
-  return isSubmitDisabled
 }
 
 export const isEthereumAddress = (address: string) => {

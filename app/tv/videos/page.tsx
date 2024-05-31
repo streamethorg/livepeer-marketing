@@ -23,12 +23,12 @@ export default async function ArchivePage({
   params,
   searchParams,
 }: OrganizationPageProps) {
-  if (!params.organization) {
+  if (!process.env.NEXT_ORGANIZATION) {
     return notFound()
   }
 
   const organization = await fetchOrganization({
-    organizationSlug: params.organization,
+    organizationSlug: process.env.NEXT_ORGANIZATION,
   })
 
   if (!organization) {
@@ -86,7 +86,7 @@ export default async function ArchivePage({
         </div>
         <Suspense fallback={<ArchiveVideoSkeleton />}>
           <ArchiveVideos
-            organizationSlug={params.organization}
+            organizationSlug={process.env.NEXT_ORGANIZATION}
             searchQuery={searchParams.searchQuery || ''}
             page={Number(searchParams.page || 1)}
             event={searchParams.event}
@@ -101,12 +101,12 @@ export async function generateMetadata(
   { params }: ChannelPageParams,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  if (!params.organization) {
+  if (!process.env.NEXT_ORGANIZATION) {
     return generalMetadata
   }
 
   const organization = await fetchOrganization({
-    organizationSlug: params.organization,
+    organizationSlug: process.env.NEXT_ORGANIZATION,
   })
 
   if (!organization) {

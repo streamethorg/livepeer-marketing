@@ -1,8 +1,12 @@
 import { IExtendedSession } from '../types'
 import { apiUrl } from '@/lib/utils/utils'
-import { Livepeer } from 'livepeer'
 import { ISession } from '@/lib/interfaces/session.interface'
 import { revalidatePath } from 'next/cache'
+import { Livepeer } from 'livepeer'
+
+const livepeer = new Livepeer({
+  apiKey: process.env.LIVEPEER_API_KEY,
+})
 
 export const createSession = async ({
   session,
@@ -37,9 +41,6 @@ export const fetchSession = async ({
   session: string
 }): Promise<IExtendedSession | null> => {
   try {
-    const LivepeerClient = new Livepeer({
-      apiKey: process.env.LIVEPEER_API_KEY,
-    })
     const response = await fetch(`${apiUrl()}/sessions/${session}`, {
       cache: 'no-store',
     })
@@ -48,12 +49,9 @@ export const fetchSession = async ({
     }
     const data: IExtendedSession = (await response.json()).data
     if (data.assetId) {
-      console.log(data.assetId)
-      const livepeerData = await LivepeerClient.asset.get(
-        data.assetId
-      )
-      console.log('DATAAAAAAA', livepeerData)
-      // data.videoUrl = livepeerData.asset?.playbackUrl
+      // const assetData = (await livepeer.asset.get(data.assetId)).asset
+      // console.log('DATAAAAAAA', assetData)
+      // data.videoUrl = assetData?.playbackUrl ?? ''
     }
     return data
   } catch (e) {

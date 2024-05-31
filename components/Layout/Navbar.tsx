@@ -6,7 +6,6 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import { NavBarProps } from '@/lib/types'
-import { ConnectWalletButton } from '../misc/ConnectWalletButton'
 import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog'
 
 export default function Navbar({
@@ -42,24 +41,6 @@ export default function Navbar({
             </Link>
           </NavigationMenuItem>
         ))}
-        {organization === 'ethprague' && (
-          <Dialog>
-            <DialogTrigger>
-              <NavigationMenuItem
-                className={`${navigationMenuTriggerStyle()} bg-muted`}>
-                Schedule
-              </NavigationMenuItem>
-            </DialogTrigger>
-            <DialogContent className="w-[calc(100vw-54px)] lg:min-w-[1000px] xl:min-w-[1250px] 2xl:min-w-[1400px] h-[calc(100vh-54px)] md:h-[800px] p-2 md:p-0">
-              <iframe
-                src="https://ethprague.com/schedule"
-                width="100%"
-                height="100%"
-                name="myiFrame"></iframe>
-            </DialogContent>
-          </Dialog>
-        )}
-
       </ul>
     </div>
   )

@@ -10,8 +10,8 @@ import {
   IGenerateEmbedCode,
   eSort,
 } from '@/lib/types'
-import { IOrganizationModel } from '@/lib/interfaces/organization.interface'
-import { IEventModel } from '@/lib/interfaces/event.interface'
+import { IOrganization } from '@/lib/interfaces/organization.interface'
+import { IEvent } from '@/lib/interfaces/event.interface'
 import { UseFormProps, UseFormReturn } from 'react-hook-form'
 import { getDateInUTC } from './time'
 import { toast } from 'sonner'
@@ -108,8 +108,8 @@ export const archivePath = ({
   event,
   searchQuery,
 }: {
-  organizationSlug: IOrganizationModel['slug']
-  event?: IEventModel['slug']
+  organizationSlug: IOrganization['slug']
+  event?: IEvent['slug']
   searchQuery?: string
 }) => {
   const params = new URLSearchParams()

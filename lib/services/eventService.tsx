@@ -1,6 +1,6 @@
 import { IStage } from '@/lib/interfaces/stage.interface'
 import { apiUrl } from '@/lib/utils/utils'
-import { IEvent, IEventModel } from '@/lib/interfaces/event.interface'
+import { IEvent } from '@/lib/interfaces/event.interface'
 import { fetchOrganization } from './organizationService'
 import { IExtendedEvent } from '../types'
 
@@ -89,7 +89,7 @@ export const createEvent = async ({
 }: {
   event: IEvent
   authToken: string
-}): Promise<IEventModel> => {
+}): Promise<IEvent> => {
   try {
     const response = await fetch(`${apiUrl()}/events`, {
       method: 'POST',
@@ -116,7 +116,7 @@ export const updateEvent = async ({
 }: {
   event: IExtendedEvent
   authToken: string
-}): Promise<IEventModel> => {
+}): Promise<IEvent> => {
   const modifiedObject = (({ _id, ...rest }) => rest)(event)
   const response = await fetch(`${apiUrl()}/events/${event._id}`, {
     method: 'PUT',
@@ -140,7 +140,7 @@ export const deleteEvent = async ({
   eventId: string
   organizationId: string
   authToken: string
-}): Promise<IEventModel> => {
+}): Promise<IEvent> => {
   try {
     const response = await fetch(`${apiUrl()}/events/${eventId}`, {
       method: 'DELETE',
@@ -169,7 +169,7 @@ export const syncEventImport = async ({
   eventId: string
   organizationId: string
   authToken: string
-}): Promise<IEventModel> => {
+}): Promise<IEvent> => {
   const response = await fetch(
     `${apiUrl()}/events/import/${eventId}`,
     {

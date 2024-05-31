@@ -1,4 +1,3 @@
-import { ISessionModel } from '@/lib/interfaces/session.interface'
 import { IExtendedSession } from '../types'
 import { apiUrl } from '@/lib/utils/utils'
 import { Livepeer } from 'livepeer'
@@ -50,8 +49,10 @@ export const fetchSession = async ({
     const data: IExtendedSession = (await response.json()).data
     if (data.assetId) {
       console.log(data.assetId)
-      const livepeerData = await LivepeerClient.asset.get(data.assetId)
-      console.log("DATAAAAAAA", livepeerData)
+      const livepeerData = await LivepeerClient.asset.get(
+        data.assetId
+      )
+      console.log('DATAAAAAAA', livepeerData)
       // data.videoUrl = livepeerData.asset?.playbackUrl
     }
     return data
@@ -67,7 +68,7 @@ export const updateSession = async ({
 }: {
   session: IExtendedSession
   authToken: string
-}): Promise<ISessionModel> => {
+}): Promise<ISession> => {
   const modifiedSession = (({
     _id,
     slug,

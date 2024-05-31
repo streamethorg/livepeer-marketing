@@ -1,7 +1,7 @@
 import { IOrganization } from '@/lib/interfaces/organization.interface'
 import { IEvent } from '@/lib/interfaces/event.interface'
 import { ISession } from '@/lib/interfaces/session.interface'
-import { IStage, IStageModel } from '@/lib/interfaces/stage.interface'
+import { IStage } from '@/lib/interfaces/stage.interface'
 import { ISpeaker } from '@/lib/interfaces/speaker.interface'
 import { IState } from '@/lib/interfaces/state.interface'
 import { IUser } from '@/lib/interfaces/user.interface'

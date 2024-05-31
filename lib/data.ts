@@ -1,6 +1,9 @@
-import { ISpeakerModel } from '@/lib/interfaces/speaker.interface'
-
-import { NavBarProps, IPagination, IExtendedSession } from './types'
+import {
+  NavBarProps,
+  IPagination,
+  IExtendedSession,
+  IExtendedSpeaker,
+} from './types'
 import FuzzySearch from 'fuzzy-search'
 import { apiUrl } from '@/lib/utils/utils'
 
@@ -123,14 +126,14 @@ export async function fetchEventSpeakers({
   event,
 }: {
   event?: string
-}): Promise<ISpeakerModel[]> {
+}): Promise<IExtendedSpeaker[]> {
   try {
     const response = await fetch(
       `${apiUrl()}/speakers/event/${event}`
     )
     const data = (await response.json()).data
 
-    return data.map((speaker: ISpeakerModel) => speaker)
+    return data.map((speaker: IExtendedSpeaker) => speaker)
   } catch (e) {
     console.log(e)
     throw 'Error fetching event speakers'

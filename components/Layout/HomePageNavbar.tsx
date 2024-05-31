@@ -120,7 +120,6 @@ const MobileNavBar = ({
           menuVisible && 'bg-background',
           searchVisible && showSearchBar && 'bg-background'
         )}>
-
         {showSearchBar && (
           <Link href={`/${currentOrganization}`}>
             <Image
@@ -224,8 +223,6 @@ const PCNavBar = ({
             userData?.organizations?.[0]?.slug
           )}
         />
-
-        <ConnectWalletButton />
       </div>
     </NavigationMenu>
   )

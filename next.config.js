@@ -2,7 +2,7 @@ const shouldAnalyzeBundles = process.env.ANALYZE === true
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === 'production'
 let nextConfig = {
-  assetPrefix: isProd ? 'https://streameth.org' : undefined,
+  assetPrefix: isProd ? 'https://livepeer-marketing-nc3q0ps1s-streameth.vercel.app' : undefined,
 
   redirects: async () => [
     {

@@ -76,45 +76,26 @@ const MobileButtons = ({
   vod: boolean
 }) => {
   return (
-    <>
-      {video?.nftCollections?.[0] ? (
-        <>
-          <div className="w-full">
-            <CollectVideButton
-              video={video}
-              nftCollection={nftCollection}
-            />
-          </div>
-          <Popover>
-            <PopoverTrigger asChild>
-              <EllipsisVertical
-                size={30}
-                className="cursor-pointer"
-              />
-            </PopoverTrigger>
-            <PopoverContent className="flex flex-col space-y-2 w-full">
-              {/* Hydration Error */}
-              <ShareButton className="w-full" shareFor="video" />{' '}
-              {video?.assetId && (
-                <VideoDownload assetId={video?.assetId} />
-              )}
-              {!vod && (
-                <>
-                  <CalendarReminder
-                    eventName={name}
-                    description={description}
-                    start={date}
-                    end={date}
-                  />
-                </>
-              )}
-            </PopoverContent>
-          </Popover>
-        </>
-      ) : (
-        <ShareButton variant={'primary'} shareFor="video" />
+    <div className='flex flex-row flex-wrap w-full space-x-2 justify-end'>
+      {video?.nftCollections?.[0] && (
+        <div className="w-full">
+          <CollectVideButton
+            video={video}
+            nftCollection={nftCollection}
+          />
+        </div>
       )}
-    </>
+      <ShareButton className="w-full" shareFor="video" />
+      {video?.assetId && <VideoDownload assetId={video?.assetId} />}
+      {!vod && (
+        <CalendarReminder
+          eventName={name}
+          description={description}
+          start={date}
+          end={date}
+        />
+      )}
+    </div>
   )
 }
 

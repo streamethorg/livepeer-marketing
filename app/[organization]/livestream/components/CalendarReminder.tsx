@@ -30,7 +30,6 @@ const CalendarReminder = ({
     <>
       <Button
         className="hidden space-x-2 md:flex"
-        variant={'outline'}
         onClick={handleAddToCalendar}>
         <CalendarPlus size={20} />
         <span>Add to Google Calendar</span>
@@ -39,7 +38,7 @@ const CalendarReminder = ({
         className="space-x-2 md:hidden"
         onClick={handleAddToCalendar}>
         <CalendarPlus size={20} />
-        <span>Add to Google Calendar</span>
+        <span >Reminder</span>
       </Button>
     </>
   )

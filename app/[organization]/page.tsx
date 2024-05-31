@@ -78,7 +78,6 @@ const OrganizationHome = async ({
                 name={stage.name}
                 description={stage.description ?? ''}
                 date={stage.streamDate as string}
-                vod={true}
               />
             </div>
           </>

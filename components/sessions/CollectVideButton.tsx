@@ -127,17 +127,13 @@ const CollectVideButton = ({
 
   return (
     <div>
-      {!account.address ? (
-        <ConnectWalletButton />
-      ) : (
-        <Button
-          loading={isMintingNftPending || IsSwitchingChain}
-          onClick={mintCollection}
-          variant={variant}
-          className="w-full md:w-36">
-          {all ? 'Collect All Videos' : 'Collect Video'}
-        </Button>
-      )}
+      {/* <Button
+        loading={isMintingNftPending || IsSwitchingChain}
+        onClick={mintCollection}
+        variant={variant}
+        className="w-full md:w-36">
+        {all ? 'Collect All Videos' : 'Collect Video'}
+      </Button> */}
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent>

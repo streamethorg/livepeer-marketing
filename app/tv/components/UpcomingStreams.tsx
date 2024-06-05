@@ -40,6 +40,7 @@ const UpcomingStreams = async ({
                 date={livestream.streamDate as string}
                 thumbnail={livestream.thumbnail ?? ''}
                 link={`/${org}/livestream?stage=${livestream?._id?.toString()}`}
+                livestream={livestream}
               />
             </div>
           </React.Fragment>

@@ -30,7 +30,9 @@ export class IStage {
   organizationId: string
   thumbnail?: string
   streamDate?: Date | string
+  streamEndDate?: Date | string
   mintable?: boolean
   createdAt?: string
   nftCollections?: string[]
+  isMultipleDate?: boolean
 }

@@ -100,7 +100,7 @@ const MobileNavBar = ({
         )}>
         {showSearchBar && (
           <Link href={`/${currentOrganization}`}>
-            <Image
+            <img
               src={'/livepeertv.png'}
               alt="logo"
               width={190}
@@ -157,7 +157,7 @@ const PCNavBar = ({
       <div className="flex flex-1 justify-start items-center">
         {showLogo && (
           <Link href={`/${currentOrganization}`}>
-            <Image
+            <img
               src={'/livepeertv.png'}
               alt="logo"
               width={190}

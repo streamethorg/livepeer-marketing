@@ -100,8 +100,8 @@ const MobileNavBar = ({
         )}>
         {showSearchBar && (
           <Link href={`/${currentOrganization}`}>
-            <img
-              src={'/livepeertv.png'}
+            <Image
+              src={'./livepeertv.png'}
               alt="logo"
               width={190}
               height={100}
@@ -155,16 +155,14 @@ const PCNavBar = ({
   return (
     <NavigationMenu className="hidden sticky top-0 flex-row justify-between items-center p-2 px-4 w-full bg-white shadow-sm md:hidden lg:flex">
       <div className="flex flex-1 justify-start items-center">
-        {showLogo && (
-          <Link href={`/${currentOrganization}`}>
-            <img
-              src={'/livepeertv.png'}
-              alt="logo"
-              width={190}
-              height={100}
-            />
-          </Link>
-        )}
+        <Link href={`/${currentOrganization}`}>
+          <Image
+            src={'/livepeertv.png'}
+            alt="logo"
+            width={190}
+            height={100}
+          />
+        </Link>
       </div>
       <div className="flex flex-grow-0 justify-center items-center mx-auto w-2/5">
         {showSearchBar && (

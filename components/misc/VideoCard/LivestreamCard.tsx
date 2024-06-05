@@ -51,14 +51,14 @@ const LivestreamCard = ({
                 {livestream.isMultipleDate && livestream.streamEndDate
                   ? `${formatDate(
                       new Date(date),
-                      'ddd. MMM. D, YYYY, hh:mm a'
+                      'ddd. MMM. D, YYYY, h:mm a'
                     )} - ${formatDate(
                       new Date(livestream.streamEndDate),
-                      'ddd. MMM. D, YYYY, hh:mm a'
+                      'ddd. MMM. D, YYYY, h:mm a'
                     )}`
                   : formatDate(
                       new Date(date),
-                      'ddd. MMM. D, YYYY, hh:mm a'
+                      'ddd. MMM. D, YYYY, h:mm a'
                     )}
               </CardDescription>
             </div>
